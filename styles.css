@@ -1,8 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap');
 
 body {
-    overflow: auto; /* Permite el desplazamiento */
-    font-size: 24px; /* Aumenta el tamaño de la letra del inicio */
+    font-size: 24px;
     font-family: 'MedievalSharp', cursive;
     text-align: center;
     background: url('privet-drive.jpg') no-repeat center center fixed;
@@ -10,7 +9,28 @@ body {
     color: #ffd700; /* Color dorado estilo Harry Potter */
     margin: 0;
     padding: 0;
-    overflow: hidden;
+    overflow-y: auto; /* Permite el desplazamiento vertical */
+    overflow-x: hidden; /* Evita el desplazamiento horizontal */
+}
+
+/* Menú de navegación */
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 10px;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: #ffd700;
+    text-decoration: none;
+    font-size: 20px;
 }
 
 /* Contenedor para cartas y búhos animados */
@@ -29,8 +49,8 @@ body {
     width: 40px;
     animation: fall linear infinite;
     top: -50px; /* Para que empiece desde fuera de la pantalla */
-    animation-delay: calc(-1 * var(--random-duration)); /* Comienza en movimiento */
 }
+
 @keyframes fall {
     from {
         transform: translateY(-100px) rotate(0deg);
@@ -42,12 +62,12 @@ body {
     }
 }
 
+/* Búhos volando */
 .flying-owl {
     position: absolute;
     width: 80px;
     animation: fly linear infinite;
     left: -100px; /* Para que empiece fuera de la pantalla */
-    animation-delay: calc(-1 * var(--random-duration)); /* Comienza en movimiento */
 }
 
 @keyframes fly {
@@ -81,7 +101,8 @@ body {
 
 /* Carta emergente */
 .letter {
-    display: none;
+    visibility: hidden;
+    opacity: 0;
     background: rgba(255, 255, 255, 0.9);
     color: black;
     padding: 20px;
@@ -89,11 +110,17 @@ body {
     width: 80%;
     max-width: 400px;
     margin: auto;
-    position: absolute;
+    position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+    transition: opacity 0.5s ease-in-out, visibility 0.5s;
+}
+
+.letter.show {
+    visibility: visible;
+    opacity: 1;
 }
 
 .letter p {
@@ -113,4 +140,15 @@ body {
 
 .letter button:hover {
     background: orange;
+}
+.carta {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    color: black;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+    text-align: left;
+    overflow-y: auto; /* Permite el desplazamiento dentro de la carta si es necesario */
 }

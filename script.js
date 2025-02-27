@@ -34,12 +34,18 @@ function createBackgroundElements() {
     }
 }
 
-// Mostrar la carta
+// Mostrar la carta con animación suave
 function openLetter() {
-    document.getElementById("letter").style.display = "block";
+    const letter = document.getElementById("letter");
+    if (letter) {
+        letter.classList.add("show");
+    }
 }
 
-// Cerrar la carta
+// Cerrar la carta con animación suave
 function closeLetter() {
-    document.getElementById("letter").style.display = "none";
+    const letter = document.getElementById("letter");
+    if (letter) {
+        letter.classList.remove("show");
+    }
 }
